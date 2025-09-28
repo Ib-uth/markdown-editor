@@ -68,8 +68,9 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
               {children}
             </blockquote>
           ),
-          code: ({ inline, className, children, ...props }) => {
-            return !inline ? (
+          code: ({ className, children, ...props }) => {
+            const isInline = !className?.includes('language-')
+            return !isInline ? (
               <pre className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
                 <code className={className} {...props}>
                   {children}
@@ -113,7 +114,7 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
           ),
           img: ({ src, alt }) => (
             <Image 
-              src={src || ''} 
+              src={typeof src === 'string' ? src : ''} 
               alt={alt || ''} 
               width={800}
               height={400}

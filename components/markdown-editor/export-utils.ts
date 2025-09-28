@@ -92,8 +92,7 @@ export const exportMarkdownToHTML = async (markdown: string) => {
     // Configure marked for GitHub-flavored markdown
     marked.setOptions({
       gfm: true,
-      breaks: true,
-      mangle: false
+      breaks: true
     })
 
     // Convert markdown to HTML
