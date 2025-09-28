@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MarkCraft",
+  title: "MarkCraft - An Innovative MarkDown Editor",
   description: "A powerful markdown editor with live preview, syntax highlighting, and export features",
   icons: {
     icon: '/favicon.svg',

@@ -4,7 +4,6 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
-import rehypeRaw from 'rehype-raw'
 import 'highlight.js/styles/github-dark.css'
 
 interface MarkdownPreviewProps {
@@ -29,7 +28,7 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight, rehypeRaw]}
+        rehypePlugins={[rehypeHighlight]}
         components={{
           // Custom components for better styling
           h1: ({ children }) => (
@@ -111,14 +110,19 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
               {children}
             </a>
           ),
-          img: ({ src, alt }) => (
-            <img 
-              src={src || ''} 
-              alt={alt || 'Image'} 
-              className="max-w-full h-auto rounded-lg shadow-sm mb-4"
-              style={{ border: '2px solid #e5e7eb' }}
-            />
-          ),
+          img: ({ src, alt }) => {
+            console.log('Image component - src:', src, 'alt:', alt);
+            return (
+              <img 
+                src={src || ''} 
+                alt={alt || 'Image'} 
+                className="max-w-full h-auto rounded-lg shadow-sm mb-4"
+                style={{ border: '2px solid #e5e7eb' }}
+                onLoad={() => console.log('Image loaded successfully:', src)}
+                onError={(e) => console.log('Image failed to load:', src, e)}
+              />
+            );
+          },
           hr: () => (
             <hr className="my-8 border-gray-300 dark:border-gray-600" />
           ),
