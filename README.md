@@ -2,8 +2,6 @@
 
 A powerful, modern markdown editor built with React, TypeScript, and Tailwind CSS. Features a split-screen layout with live preview, syntax highlighting, and export capabilities.
 
-![MarkCraft Screenshot](https://markcraft.lindy.site)
-
 ## 🚀 Features
 
 - **Split-Screen Layout**: Editor on the left, live preview on the right
@@ -31,7 +29,7 @@ A powerful, modern markdown editor built with React, TypeScript, and Tailwind CS
 
 ## 🎯 Live Demo
 
-Visit the live application: [https://markcraft.lindy.site](https://markcraft.lindy.site)
+Visit the live application: [https://markcraft-editor.vercel.app](https://markcraft-editor.vercel.app)
 
 ## 🏃‍♂️ Getting Started
 
