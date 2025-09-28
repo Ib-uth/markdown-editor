@@ -8,7 +8,7 @@ export const MobileWarning: React.FC = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || (window as unknown as { opera?: string }).opera
+      const userAgent = navigator.userAgent || navigator.vendor || (window as unknown as { opera?: string }).opera || ''
       const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase())
       const isSmallScreen = window.innerWidth < 768
       
