@@ -6,19 +6,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { 
-  Bold, 
-  Italic, 
-  Strikethrough, 
-  Code, 
-  Heading1, 
-  Heading2, 
-  Heading3,
-  List, 
-  ListOrdered, 
-  Quote, 
-  Link, 
-  Image, 
-  Table,
   Download,
   FileText,
   Moon,
@@ -52,9 +39,8 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   const [markdown, setMarkdown] = useState(initialValue)
   const [editorTheme, setEditorTheme] = useState('vs-dark')
   const [showPreview, setShowPreview] = useState(true)
-  const [isFullscreen, setIsFullscreen] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
-  const editorRef = useRef<any>(null)
+  const editorRef = useRef<unknown>(null)
   const { theme, setTheme } = useTheme()
 
   const handleEditorChange = useCallback((value: string | undefined) => {
@@ -63,14 +49,35 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     onChange?.(newValue)
   }, [onChange])
 
-  const handleEditorDidMount = (editor: any) => {
+  const handleEditorDidMount = (editor: unknown) => {
     editorRef.current = editor
   }
 
   const insertText = useCallback((text: string, offset = 0) => {
     if (!editorRef.current) return
     
-    const selection = editorRef.current.getSelection()
+    const editor = editorRef.current as {
+      getSelection: () => {
+        startLineNumber: number
+        startColumn: number
+        endLineNumber: number
+        endColumn: number
+      }
+      executeEdits: (source: string, edits: Array<{
+        range: {
+          startLineNumber: number
+          startColumn: number
+          endLineNumber: number
+          endColumn: number
+        }
+        text: string
+        forceMoveMarkers: boolean
+      }>) => void
+      setPosition: (position: { lineNumber: number; column: number }) => void
+      focus: () => void
+    }
+    
+    const selection = editor.getSelection()
     const range = {
       startLineNumber: selection.startLineNumber,
       startColumn: selection.startColumn,
@@ -78,7 +85,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
       endColumn: selection.endColumn
     }
     
-    editorRef.current.executeEdits('', [{
+    editor.executeEdits('', [{
       range,
       text,
       forceMoveMarkers: true
@@ -90,10 +97,10 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         lineNumber: selection.startLineNumber,
         column: selection.startColumn + offset
       }
-      editorRef.current.setPosition(newPosition)
+      editor.setPosition(newPosition)
     }
     
-    editorRef.current.focus()
+    editor.focus()
   }, [])
 
   const exportToPDF = useCallback(async () => {
@@ -133,11 +140,10 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   }, [markdown, isExporting])
 
   const togglePreview = () => setShowPreview(!showPreview)
-  const toggleFullscreen = () => setIsFullscreen(!isFullscreen)
 
   return (
     <TooltipProvider>
-      <div className={`flex flex-col h-screen bg-background ${className} ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
+      <div className={`flex flex-col h-screen bg-background ${className}`}>
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b bg-card">
           <div className="flex items-center space-x-4">

@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeRaw from 'rehype-raw'
+import Image from 'next/image'
 import 'highlight.js/styles/github-dark.css'
 
 interface MarkdownPreviewProps {
@@ -68,7 +69,6 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
             </blockquote>
           ),
           code: ({ inline, className, children, ...props }) => {
-            const match = /language-(\w+)/.exec(className || '')
             return !inline ? (
               <pre className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
                 <code className={className} {...props}>
@@ -112,9 +112,11 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
             </a>
           ),
           img: ({ src, alt }) => (
-            <img 
-              src={src} 
-              alt={alt} 
+            <Image 
+              src={src || ''} 
+              alt={alt || ''} 
+              width={800}
+              height={400}
               className="max-w-full h-auto rounded-lg shadow-sm mb-4"
             />
           ),
