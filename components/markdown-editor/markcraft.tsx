@@ -32,7 +32,7 @@ export interface MarkdownEditorProps {
 }
 
 export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
-  initialValue = '# Welcome to Markdown Editor\n\nStart typing your markdown here...\n\n## Features\n\n- **Bold text**\n- *Italic text*\n- `Code snippets`\n- [Links](https://example.com)\n- Lists and more!\n\n```javascript\nconsole.log("Hello, World!");\n```\n\n> This is a blockquote\n\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n',
+  initialValue = '# Welcome to MarkCraft\n\nStart typing your markdown here...\n\n## Features\n\n- **Bold text**\n- *Italic text*\n- `Code snippets`\n- [Links](https://example.com)\n- Lists and more!\n\n```javascript\nconsole.log("Hello, World!");\n```\n\n> This is a blockquote\n\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n',
   onChange,
   className = ''
 }) => {
@@ -148,7 +148,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         <div className="flex items-center justify-between p-4 border-b bg-card">
           <div className="flex items-center space-x-4">
             <div className="flex flex-col">
-              <h1 className="text-xl font-semibold">Markdown Editor</h1>
+              <h1 className="text-xl font-semibold">MarkCraft</h1>
               <p className="text-xs text-muted-foreground">
                 By{' '}
                 <a 

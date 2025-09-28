@@ -129,7 +129,7 @@ nextjs-portal {
   display: none;
 }
 
-/* Markdown Editor Styles */
+/* MarkCraft Styles */
 
 /* Highlight.js theme overrides */
 .hljs {
@@ -170,11 +170,11 @@ nextjs-portal {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .markdown-editor-split {
+  .markcraft-split {
     flex-direction: column;
   }
   
-  .markdown-editor-split > div {
+  .markcraft-split > div {
     width: 100% !important;
     height: 50% !important;
   }
@@ -225,8 +225,8 @@ nextjs-portal {
 
 /* Print styles for PDF export */
 @media print {
-  .markdown-editor-toolbar,
-  .markdown-editor-header {
+  .markcraft-toolbar,
+  .markcraft-header {
     display: none !important;
   }
   

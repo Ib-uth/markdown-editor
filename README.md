@@ -1,8 +1,8 @@
-# Markdown Editor
+# MarkCraft
 
 A powerful, modern markdown editor built with React, TypeScript, and Tailwind CSS. Features a split-screen layout with live preview, syntax highlighting, and export capabilities.
 
-![Markdown Editor Screenshot](https://markdown-editor.lindy.site)
+![MarkCraft Screenshot](https://markcraft.lindy.site)
 
 ## 🚀 Features
 
@@ -31,7 +31,7 @@ A powerful, modern markdown editor built with React, TypeScript, and Tailwind CS
 
 ## 🎯 Live Demo
 
-Visit the live application: [https://markdown-editor.lindy.site](https://markdown-editor.lindy.site)
+Visit the live application: [https://markcraft.lindy.site](https://markcraft.lindy.site)
 
 ## 🏃‍♂️ Getting Started
 
@@ -44,8 +44,8 @@ Visit the live application: [https://markdown-editor.lindy.site](https://markdow
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Ib-uth/markdown-editor.git
-cd markdown-editor
+git clone https://github.com/Ib-uth/markcraft.git
+cd markcraft
 ```
 
 2. Install dependencies:
@@ -101,20 +101,20 @@ npm run dev
 The editor uses Tailwind CSS and shadcn/ui components, making it easy to customize:
 
 - Modify `app/globals.css` for global styles
-- Update component styles in `components/markdown-editor/`
+- Update component styles in `components/markcraft/`
 - Customize themes in the Monaco Editor configuration
 
 ## 📦 Project Structure
 
 ```
-markdown-editor/
+markcraft/
 ├── app/
 │   ├── globals.css          # Global styles
 │   ├── layout.tsx           # Root layout with providers
 │   └── page.tsx             # Main page
 ├── components/
-│   ├── markdown-editor/
-│   │   ├── markdown-editor.tsx    # Main editor component
+│   ├── markcraft/
+│   │   ├── markcraft.tsx    # Main editor component
 │   │   ├── markdown-preview.tsx   # Preview component
 │   │   ├── markdown-toolbar.tsx   # Toolbar component
 │   │   ├── export-utils.ts        # Export functionality

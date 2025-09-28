@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeRaw from 'rehype-raw'
-import Image from 'next/image'
 import 'highlight.js/styles/github-dark.css'
 
 interface MarkdownPreviewProps {
@@ -113,12 +112,15 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
             </a>
           ),
           img: ({ src, alt }) => (
-            <Image 
+            <img 
               src={typeof src === 'string' ? src : ''} 
               alt={alt || ''} 
-              width={800}
-              height={400}
               className="max-w-full h-auto rounded-lg shadow-sm mb-4"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
             />
           ),
           hr: () => (
