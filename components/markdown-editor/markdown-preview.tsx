@@ -113,14 +113,10 @@ export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
           ),
           img: ({ src, alt }) => (
             <img 
-              src={typeof src === 'string' ? src : ''} 
-              alt={alt || ''} 
+              src={src || ''} 
+              alt={alt || 'Image'} 
               className="max-w-full h-auto rounded-lg shadow-sm mb-4"
-              loading="lazy"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
+              style={{ border: '2px solid #e5e7eb' }}
             />
           ),
           hr: () => (
