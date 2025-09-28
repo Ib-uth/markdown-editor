@@ -93,7 +93,6 @@ export const exportMarkdownToHTML = async (markdown: string) => {
     marked.setOptions({
       gfm: true,
       breaks: true,
-      headerIds: true,
       mangle: false
     })
 
